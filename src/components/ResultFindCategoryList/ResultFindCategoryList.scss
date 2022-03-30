@@ -1,0 +1,42 @@
+@import "../../style/vars.scss";
+
+.result-find__list {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid $lightGray;
+
+    .result-find__title {
+        padding: 1rem 1.5rem;
+        color: $white;
+        background: $lightBlue;
+    }
+
+    .result-list__item {
+
+        &.active {
+            background: $gray   ;
+        }
+
+        &:hover .result-list__num {
+            background: $white;
+        }
+    }
+
+    .result-list__title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .result-list__num {
+        width: 35px;
+        height: 25px;
+        border-radius: 5px;
+        background: $gray;
+        text-align: center;
+        transition: all .2s linear;
+
+        & .span {
+
+        }
+    }
+}
