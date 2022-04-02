@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
@@ -7,15 +7,6 @@ import "./find.scss";
 let Find = (props) => {
     const {handleSubmit} = props;
     const {find} = useSelector(state => state.form);
-    const { findResult } = useSelector(state => state.findReducer);
-    let urlFindCategory;
-
-    const handleClick = () => {
-        if(findResult.length) {
-            console.log(Object?.keys(findResult[0])[0])
-            urlFindCategory = `/${Object?.keys(findResult[0])[0]}`;
-        }
-    }
 
     return (
         <form

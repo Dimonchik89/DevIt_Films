@@ -17,6 +17,9 @@ const customTheme = createTheme({
         black: {
             main: "#000"
         },
+        white: {
+            main: "#fff"
+        }
     },
     typography: {
         fontFamily: 'Roboto',

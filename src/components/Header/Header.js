@@ -66,7 +66,7 @@ const Header = () => {
                             display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <HeaderNavMobileLinks handleCloseNavMenu={handleCloseNavMenu}/>
+                            <HeaderNavMobileLinks />
                         </Menu>
                     </Box>
                     <Typography

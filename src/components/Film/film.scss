@@ -14,9 +14,6 @@
         border-radius: 1rem;
         overflow: hidden;
 
-        .film__poster {
-        }
-
         .film-raiting__wrapper {
             padding: 0 1rem;
             position: relative;
@@ -38,9 +35,23 @@
         }
 
         .film-text__wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-top: 2rem;
             padding: 0 .5rem;
-            word-wrap: normal;
+
+            .film-text__container {
+                padding: 0 .5rem;
+                word-wrap: normal;
+            }
+
+            .film-card__icon {
+                color: #900;
+                cursor: pointer;
+            }
         }
     }
+
+
 }

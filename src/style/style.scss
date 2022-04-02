@@ -1,5 +1,11 @@
 @import "./vars.scss";
 
+*,
+*:before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -31,4 +37,12 @@ button {
 a {
     text-decoration: none;
     color: black;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
 }

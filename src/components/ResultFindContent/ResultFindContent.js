@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { useSelector } from "react-redux";
 import ResultFindContentItem from "./ResultFindContentItem";
+import { nanoid } from "nanoid";
 import "./resultFindContent.scss";
 
 const ResultFindContet = () => {
@@ -23,11 +24,11 @@ const ResultFindContet = () => {
         )
     }
 
-    const content = actualArr.forEach(film => <ResultFindContentItem film={film}/>)
+    const content = actualArr.map(film => <ResultFindContentItem key={nanoid()} film={film}/>)
     return (
-        <>
+        <Box className="result-find__content">
             {content}
-        </>
+        </Box>
     )
 }
 export default ResultFindContet;

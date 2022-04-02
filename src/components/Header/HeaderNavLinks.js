@@ -1,7 +1,5 @@
 import React, {memo} from "react";
-import Button from '@mui/material/Button';
-import HeaderSubMenu from "./HeaderSubMenu";
-import Typography from '@mui/material/Typography';
+import NavLink from "../NavLink/NavLink";
 import { nanoid } from 'nanoid'
 import "./header.scss";
 
@@ -29,24 +27,9 @@ const pages = [
     ]},
 ];
 
-const HeaderNavLinks = memo(({handleCloseNavMenu}) => {
+const HeaderNavLinks = memo(() => {
 
-    const links = pages.map((page) => (
-        <Button
-            className="header-nav__link"
-            key={nanoid()}
-            onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-                <Typography
-                    variant="h6"
-                    component="h6"
-                >
-                    {page.page}
-                </Typography>
-
-            <HeaderSubMenu menu={page.menu}/>
-        </Button>
+    const links = pages.map((page) => ( <NavLink key={nanoid()} item={page} textStyle="header-link__style"/>
     ))
 
     return (

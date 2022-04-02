@@ -1,0 +1,33 @@
+@import "../../style/vars.scss";
+
+.person {
+    margin-top: 60px;
+    padding-top: 20px;
+
+    .person-wrapper {
+        margin-top: 20px;
+
+        .person__content {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 2rem;
+
+            .person-item {
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+                .person-item__description {
+                    padding: 1rem;
+
+                    .person-item__text {
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+
+                    }
+                }
+            }
+        }
+    }
+}

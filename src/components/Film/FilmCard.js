@@ -9,17 +9,21 @@ import "../../style/style.scss";
 import "./film.scss";
 
 const FilmCard = ({film}) => {
-    const { popularUrl } = useSelector(state => state.popularMainReducer)
+    const { popularUrl } = useSelector(state => state.popularMainReducer);
+
     return (
-        <Link to={`${popularUrl}/${film.id}`}>
+        // <Link to={`${popularUrl}/${film.id}`}>
             <Box className="film-card">
                 <Box className="film-container">
-                    <FilmCardPoster film={film}/>
+                    <Link to={`${popularUrl}/${film.id}`}>
+                        <FilmCardPoster film={film}/>
+                    </Link>
+
                     <FilmCardRaiting raiting={film.vote_average}/>
                     <FilmCardName film={film}/>
                 </Box>
             </Box>
-        </Link>
+        // {/* </Link> */}
     )
 }
 export default FilmCard;

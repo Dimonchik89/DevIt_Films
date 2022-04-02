@@ -5,14 +5,12 @@ const initialState = {
     findResult: [],
     showFindCategory: "movie"
 }
-
 const setFindHandler = (state, action) => {
     return {
         ...state,
         findResult: action.payload
     }
 }
-
 const changeShowFindCategoryHandle = (state, action) => {
     return {
         ...state,

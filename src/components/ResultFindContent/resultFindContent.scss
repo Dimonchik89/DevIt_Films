@@ -1,3 +1,38 @@
+@import "../../style/vars.scss";
+
 .result-find__content {
 
+    .result-find__wrapper {
+        margin-bottom: 2rem;
+
+        .result-find__item {
+            display: flex;
+            border: 1px solid $lightGray;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+            .result-find__poster {
+                height: 141px;
+                width: 94px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .result-find__description {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 1rem;
+
+                .result-find__text {
+                    margin-top: .5rem;
+                }
+            }
+        }
+    }
 }

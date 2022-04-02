@@ -8,7 +8,6 @@ import { nanoid } from "nanoid";
 import "./header.scss";
 
 const HeaderSubMenu = memo(({menu}) => {
-
     const content = menu.map(({linkName, link}) => (
         <ListItem key={nanoid()}>
                 <ListItemButton>
@@ -16,12 +15,11 @@ const HeaderSubMenu = memo(({menu}) => {
                         <Typography
                             variant="h6"
                             component="h6"
-                            color="common.black"
+                            color="primary"
                         >
                             {linkName}
                         </Typography>
                     </Link>
-
                 </ListItemButton>
             </ListItem>
     ));
