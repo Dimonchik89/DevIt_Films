@@ -21,7 +21,6 @@ const FilmPageIntroHeader = memo(({film}) => {
                 >
                     {film?.release_date}
                 </Typography>
-
                 <Typography
                     variant="body1"
                     component="span"

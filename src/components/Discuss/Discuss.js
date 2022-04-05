@@ -13,7 +13,6 @@ const Discuss = () => {
         getResponse(`${pathname}?`)
             .then(data => setPosts(data.results))
     }, [])
-    console.log(posts);
     const content = posts?.map(review => <ReviewItem review={review}/>)
     return (
         <>

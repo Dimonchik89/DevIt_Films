@@ -6,8 +6,6 @@ import useHttp from "../../hooks/useHttp";
 import { filmFetching, filmFetched, filmFetchingError } from "../../store/singleFilm/filmAction";
 import FilmPageIntro from "./FilmPageIntro/FilmPageIntro";
 import FilnPageActor from "./FilmPageActor/FilmPageActor";
-// import FilmPageReviewBlock from "./FilmPageReview/FilmPageReviewBlock";
-// import FilmPageMedia from "./FilmPageMedia/FilmPageMedia";
 
 const FilmPageReviewBlock = lazy(() => import("./FilmPageReview/FilmPageReviewBlock"));
 const FilmPageMedia = lazy(() => import("./FilmPageMedia/FilmPageMedia"));

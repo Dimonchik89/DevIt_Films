@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import useHttp from "../../hooks/useHttp";
-import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/system";
 import { Container } from "@mui/material";
 import MainTitle from "./MainTitle";

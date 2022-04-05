@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./person.scss";
 
-const PersoneItem = ({actor}) => {
+const PersoneItem = memo(({actor}) => {
     let str = actor.known_for.map(item => item.title || item.name);
     return (
         <Box className="person-item">
@@ -27,5 +27,5 @@ const PersoneItem = ({actor}) => {
             </Box>
         </Box>
     )
-}
+})
 export default PersoneItem;

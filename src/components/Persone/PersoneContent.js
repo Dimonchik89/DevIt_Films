@@ -1,5 +1,5 @@
-import React, { useEffect, useState} from "react";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import React, { useEffect, memo } from "react";
+import { Box, CircularProgress } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import useHttp from "../../hooks/useHttp";
 import PersoneItem from "./PersoneItem";
@@ -7,10 +7,10 @@ import { personFetching, personFethced, personFetchingError, setTotalPages } fro
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 
-const PersoneContent = ({currentPage}) => {
+const PersoneContent = memo(({currentPage}) => {
     const location = useLocation();
     const dispatch = useDispatch()
-    const { person, loading } = useSelector(state => state.personReducer)
+    const { person } = useSelector(state => state.personReducer)
     const {getResponse} = useHttp();
     useEffect(() => {
         dispatch(personFetching());
@@ -34,5 +34,5 @@ const PersoneContent = ({currentPage}) => {
             {content}
         </Box>
     )
-}
+})
 export default PersoneContent;

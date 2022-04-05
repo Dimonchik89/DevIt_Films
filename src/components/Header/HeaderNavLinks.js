@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React from "react";
 import NavLink from "../NavLink/NavLink";
 import { nanoid } from 'nanoid'
 import "./header.scss";
@@ -27,7 +27,7 @@ const pages = [
     ]},
 ];
 
-const HeaderNavLinks = memo(() => {
+const HeaderNavLinks = () => {
     const links = pages.map((page) => ( <NavLink key={nanoid()} item={page} textStyle="header-link__style"/>
     ))
     return (
@@ -35,5 +35,5 @@ const HeaderNavLinks = memo(() => {
             {links}
         </>
     )
-})
+}
 export default HeaderNavLinks;

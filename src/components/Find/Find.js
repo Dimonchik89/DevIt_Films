@@ -19,7 +19,6 @@ let Find = memo((props) => {
                     <button type="submit" className="find__button">Search</button>
                 </Link>
             </div>
-
         </form>
     )
 })

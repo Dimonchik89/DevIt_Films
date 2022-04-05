@@ -3,12 +3,9 @@ import { Container } from "@mui/material";
 import FilmCard from "../Film/FilmCard";
 import { nanoid } from "nanoid";
 import SkeletonPage from "../Skeleton/SkeletonPage";
-
 import { useDispatch, useSelector } from "react-redux";
 import { filmsFetching, filmsFetched, filmsFetchingError } from "../../store/popularMain/popularMainAction";
 import useHttp from "../../hooks/useHttp";
-
-
 import "./main.scss";
 
 const MainFilmsContainer = memo(({moreFilms}) => {
