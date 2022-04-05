@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { Container } from "@mui/material";
 import FilmCard from "../Film/FilmCard";
 import { nanoid } from "nanoid";
@@ -11,7 +11,7 @@ import useHttp from "../../hooks/useHttp";
 
 import "./main.scss";
 
-const MainFilmsContainer = ({moreFilms}) => {
+const MainFilmsContainer = memo(({moreFilms}) => {
     const {getResponse} = useHttp();
     const dispatch = useDispatch();
     const {loading, films, popularUrl} = useSelector(state => state.popularMainReducer)
@@ -38,5 +38,5 @@ const MainFilmsContainer = ({moreFilms}) => {
         </Container>
 
     )
-}
+})
 export default MainFilmsContainer;

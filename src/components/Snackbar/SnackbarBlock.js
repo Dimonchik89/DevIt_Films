@@ -1,10 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Alert, Snackbar } from "@mui/material";
 
-const SnackbarBlock = ({open, handleChangeActiveButton}) => {
-    console.log();
+const SnackbarBlock = memo(({open, handleChangeActiveButton}) => {
     const handleClose = () => handleChangeActiveButton(!open)
-
     return (
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
             <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -12,5 +10,5 @@ const SnackbarBlock = ({open, handleChangeActiveButton}) => {
             </Alert>
         </Snackbar>
     )
-}
+})
 export default SnackbarBlock;

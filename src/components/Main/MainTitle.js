@@ -14,7 +14,6 @@ const MainTitle = memo(({title}) => {
                 {title}
             </Typography>
             <ButtonGroup/>
-
         </div>
     )
 })

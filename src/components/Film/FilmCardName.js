@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Typography } from "@mui/material";
 import FilmCardFavoriteIcon from "./FilmCardFavoriteIcon";
 
-const FilmCardName = ({film}) => {
+const FilmCardName = memo(({film}) => {
     return (
         <Box className="film-text__wrapper">
             <Box className="film-text__container">
@@ -23,5 +23,5 @@ const FilmCardName = ({film}) => {
             <FilmCardFavoriteIcon film={film}/>
         </Box>
     )
-}
+})
 export default FilmCardName;

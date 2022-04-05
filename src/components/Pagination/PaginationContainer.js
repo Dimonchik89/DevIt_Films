@@ -1,9 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Pagination, PaginationItem } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./pagination.scss";
 
-const PaginationContainer = ({currentPage, totalPage, handleChangeActiveButton}) => {
+const PaginationContainer = memo(({currentPage, totalPage, handleChangeActiveButton}) => {
     return (
         <Box className="pagination">
             <Pagination
@@ -22,5 +22,5 @@ const PaginationContainer = ({currentPage, totalPage, handleChangeActiveButton})
             />
         </Box>
     )
-}
+})
 export default PaginationContainer;

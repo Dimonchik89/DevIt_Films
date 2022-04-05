@@ -1,27 +1,25 @@
-import React, { useEffect } from "react";
+import React, {memo} from "react";
 import { Box, Typography } from "@mui/material";
 import FilmPageIntroHeader from "./FilmPageIntroHeader";
 import FilmPageIntroFooter from "./FilmPageIntroFooter";
-import ButtonCircle from "../Button/ButtonCircle";
+import ButtonCircle from "../../Button/ButtonCircle";
 import { nanoid } from "nanoid";
-
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import StarRateIcon from '@mui/icons-material/StarRate';
-
-import "../../style/style.scss";
+import { useFavorite } from "../../../hooks/useFavorite";
+import "../../../style/style.scss";
 
 const btnArr = [
-    {title: "Добавить в список", icon: FormatListBulletedIcon},
-    {title: "Добавить в избранное", icon: FavoriteIcon},
-    {title: "Добавить в свой список отслеживания", icon: AddBoxIcon},
-    {title: "Оценить!", icon: StarRateIcon},
+    {title: "Добавить в список", icon: FormatListBulletedIcon, handleAdd: null},
+    {title: "Добавить в избранное", icon: FavoriteIcon, handleAdd: useFavorite},
+    {title: "Добавить в свой список отслеживания", icon: AddBoxIcon, handleAdd: null},
+    {title: "Оценить!", icon: StarRateIcon, handleAdd: null},
 ]
 
-const FilmPageIntroDescription = ({film}) => {
-
-    const buttons = btnArr.map(button => <ButtonCircle key={nanoid()} title={button.title} Icon={button.icon} color="white"/>)
+const FilmPageIntroDescription = memo(({film}) => {
+    const buttons = btnArr.map(button => <ButtonCircle key={nanoid()} title={button.title} Icon={button.icon} film={film} color="white" handleAdd={button.handleAdd}/>)
 
     return (
         <Box className="film-page__intro-description">
@@ -61,6 +59,6 @@ const FilmPageIntroDescription = ({film}) => {
             <FilmPageIntroFooter film={film}/>
         </Box>
     )
-}
+})
 export default FilmPageIntroDescription;
 //production_companies

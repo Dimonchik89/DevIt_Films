@@ -28,10 +28,8 @@ const pages = [
 ];
 
 const HeaderNavLinks = memo(() => {
-
     const links = pages.map((page) => ( <NavLink key={nanoid()} item={page} textStyle="header-link__style"/>
     ))
-
     return (
         <>
             {links}

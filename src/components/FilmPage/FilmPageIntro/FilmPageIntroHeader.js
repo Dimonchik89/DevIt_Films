@@ -1,7 +1,7 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Typography } from "@mui/material";
 
-const FilmPageIntroHeader = ({film}) => {
+const FilmPageIntroHeader = memo(({film}) => {
     const ganres = film?.genres.map(item => item.name)
 
     return (
@@ -32,5 +32,5 @@ const FilmPageIntroHeader = ({film}) => {
             </Box>
         </Box>
     )
-}
+})
 export default FilmPageIntroHeader;

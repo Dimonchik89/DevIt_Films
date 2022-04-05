@@ -1,0 +1,28 @@
+@import "../../style/vars.scss";
+
+.actor {
+    margin-top: 2rem;
+
+    .actor__card {
+        display: inline-block;
+        border-radius: 10px;
+        max-width: 138px;
+        overflow: hidden;
+        // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+
+        .actor__card-text {
+            height: 8rem;
+            padding: .5rem;
+            word-wrap: break-word;
+        }
+
+        .actor__card-character {
+            display: -webkit-box;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    }
+}

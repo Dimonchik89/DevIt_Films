@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Container, Button, Typography } from "@mui/material";
 import "./main.scss";
 
-const MainPagination = ({handleChangeMoreFilms}) => {
+const MainPagination = memo(({handleChangeMoreFilms}) => {
     return (
         <Container
             maxWidth="xl"
@@ -21,16 +21,8 @@ const MainPagination = ({handleChangeMoreFilms}) => {
                         More films
                     </Typography>
                 </Button>
-                {/* <Pagination
-                    count={totalPage}
-                    page={activeBtn}
-                    onChange={(_, num) => handleChangeActiveButton(num)}
-                    showFirstButton
-                    showLastButton
-                    className="main-pagination"
-                /> */}
             </Box>
         </Container>
     )
-}
+})
 export default MainPagination;

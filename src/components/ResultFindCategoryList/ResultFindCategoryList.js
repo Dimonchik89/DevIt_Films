@@ -1,11 +1,11 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, List, Typography } from "@mui/material";
 import ResultFindCategoryItem from "./ResultFindCategoryItem";
 import { useChangeActive } from "../../hooks/useChange";
 import { nanoid } from "nanoid";
 import "./ResultFindCategoryList.scss";
 
-const ResultFindCategoryList = ({newArr}) => {
+const ResultFindCategoryList = memo(({newArr}) => {
     const {activeBtn, handleChangeActiveButton} = useChangeActive("movie");
     const listItemArr = newArr?.map((list, i) => {
         const listKeys = Object.keys(list)
@@ -44,5 +44,5 @@ const ResultFindCategoryList = ({newArr}) => {
             </List>
         </Box>
     )
-}
+})
 export default ResultFindCategoryList;

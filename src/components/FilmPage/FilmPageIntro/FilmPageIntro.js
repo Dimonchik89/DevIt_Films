@@ -1,8 +1,8 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Container } from "@mui/material";
 import FilmPageIntroDescription from "./FilmPageIntroDescription";
 
-const FilmPageIntro = ({film}) => {
+const FilmPageIntro = memo(({film}) => {
     return (
         <Box>
             <Box className="film-page__intro">
@@ -20,6 +20,6 @@ const FilmPageIntro = ({film}) => {
             </Box>
         </Box>
     )
-}
+})
 export default FilmPageIntro;
 //title, release_date, vote_average, tagline, overview, genres,

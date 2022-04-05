@@ -28,13 +28,11 @@ const pages = [
 ];;
 
 const HeaderNavMobileLink = memo(({handleCloseNavMenu}) => {
-
     const links = pages.map((page) => (
         <MenuItem key={nanoid()} onClick={handleCloseNavMenu}>
             <Typography textAlign="center">{page.page}</Typography>
         </MenuItem>
     ))
-
     return (
         <>
             {links}

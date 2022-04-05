@@ -1,10 +1,10 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React, {memo} from "react";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import ResultFindDescription from "./ResultFindDescription";
 import "./resultFindContent.scss";
 
-const ResultFindContentItem = ({film}) => {
+const ResultFindContentItem = memo(({film}) => {
     return (
         <Box className="result-find__wrapper">
             <Box className="result-find__item">
@@ -15,5 +15,5 @@ const ResultFindContentItem = ({film}) => {
             </Box>
         </Box>
     )
-}
+})
 export default ResultFindContentItem;

@@ -12,15 +12,11 @@ import HeaderNavLinks from "./HeaderNavLinks";
 import HeaderNavMobileLinks from "./HeaderNavMobileLinks";
 import HeaderAvatar from "./HeaderAvatar";
 
-
 const Header = () => {
-
     const [anchorElNav, setAnchorElNav] = useState(null);
-
     const handleOpenNavMenu = useCallback((event) => {
       setAnchorElNav(event.currentTarget);
     }, [anchorElNav]);
-
     const handleCloseNavMenu = useCallback(() => {
       setAnchorElNav(null);
     }, [anchorElNav]);

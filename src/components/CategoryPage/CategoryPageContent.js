@@ -27,7 +27,6 @@ const CategoryPageContent = () => {
             })
             .catch(dispatch(filmsFetchingError()))
     }, [location.pathname, activeBtn])
-
     const content = films?.map(film => <FilmCard key={nanoid()} film={film}/>)
     return (
         <Box>

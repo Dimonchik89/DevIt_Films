@@ -1,9 +1,9 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
-import "../../style/style.scss";
+import "../../../style/style.scss";
 
-const FilmPageIntroFooter = ({film}) => {
+const FilmPageIntroFooter = memo(({film}) => {
     const company = film?.production_companies.map(item => (
         <Typography
             key={nanoid()}
@@ -29,5 +29,5 @@ const FilmPageIntroFooter = ({film}) => {
             </Box>
         </>
     )
-}
+})
 export default FilmPageIntroFooter;

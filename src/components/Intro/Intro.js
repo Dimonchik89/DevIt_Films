@@ -15,7 +15,6 @@ const Intro = () => {
     const dispatch = useDispatch();
     const {getResponse} = useHttp()
     const {newArr, hashMapReturn} = useContains();
-
     const onSubmit = (formData) => {
         getResponse(`/search/multi?query=${formData.find}&language=ru-Ru&`)
             .then(response => {

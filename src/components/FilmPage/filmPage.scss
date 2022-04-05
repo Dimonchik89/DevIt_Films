@@ -107,3 +107,36 @@
         }
     }
 }
+
+.film-page__media {
+    margin-top: 3rem;
+
+    .film-page__slider-wrapper {
+        min-height: 300px;
+    }
+
+    .film-page__media-slide {
+        height: auto;
+        max-height: 100%;
+        width: auto !important;
+    }
+}
+
+.film-page__recomend {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+
+    .film-recomend__wrapper {
+        display: inline-block;
+
+        .film-recomend__img-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+
+            .film-recomend__info {
+                padding: 1rem;
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
-import React from "react";
+import React, {memo} from "react";
 import { useSelector } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { Link } from "react-router-dom";
 import "./find.scss";
 
-let Find = (props) => {
+let Find = memo((props) => {
     const {handleSubmit} = props;
     const {find} = useSelector(state => state.form);
 
@@ -22,7 +22,7 @@ let Find = (props) => {
 
         </form>
     )
-}
+})
 
 Find = reduxForm({
     form: "find"

@@ -8,13 +8,11 @@ export const useFavorite = () => {
         if(favorite) {
             let newFavoriteFilms = favoriteFilms.filter(item => item.id !== film.id);
             localStorage.setItem("favorite", JSON.stringify(newFavoriteFilms))
-
         } else {
             favoriteFilms.push(film);
             localStorage.setItem("favorite", JSON.stringify(favoriteFilms));
         }
         setFavorite(favorite => !favorite)
-        handleChangeActiveButton(true)
     }
     return { handleAddFavorite };
 }

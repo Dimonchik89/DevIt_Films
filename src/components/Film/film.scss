@@ -3,55 +3,53 @@
 .film-card {
     margin-bottom: 2rem;
 
-
     &:last-child {
         margin-right: 0;
     }
+}
 
-    .film-container {
-        height: 545px;
-        box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2);
-        border-radius: 1rem;
-        overflow: hidden;
+.film-container {
+    height: 545px;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2);
+    border-radius: 1rem;
+    overflow: hidden;
 
-        .film-raiting__wrapper {
-            padding: 0 1rem;
-            position: relative;
-            .film-raiting {
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                background: $black;
-                position: absolute;
-                top: 50%;
-                left: 1rem;
-                z-index: 2;
-                transform: translateY(-50%);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: 1px solid $gray;
-            }
-        }
-
-        .film-text__wrapper {
+    .film-raiting__wrapper {
+        padding: 0 1rem;
+        position: relative;
+        .film-raiting {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: $black;
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            z-index: 2;
+            transform: translateY(-50%);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            margin-top: 2rem;
-            padding: 0 .5rem;
-
-            .film-text__container {
-                padding: 0 .5rem;
-                word-wrap: normal;
-            }
-
-            .film-card__icon {
-                color: #900;
-                cursor: pointer;
-            }
+            border: 1px solid $gray;
+            color: $gray;
         }
     }
 
+    .film-text__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+        padding: 0 .5rem;
 
+        .film-text__container {
+            padding: 0 .5rem;
+            word-wrap: normal;
+        }
+
+        .film-card__icon {
+            color: #900;
+            cursor: pointer;
+        }
+    }
 }

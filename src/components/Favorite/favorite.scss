@@ -1,0 +1,13 @@
+@import "../../style/vars.scss";
+
+.favorite {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+
+    .favorite-wrapper {
+        margin-top: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1.5rem;
+    }
+}

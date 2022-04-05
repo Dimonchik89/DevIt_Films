@@ -12,6 +12,11 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 
+            max-height: 141px;
+            // text-overflow: ellipsis;
+            //     overflow: hidden;
+            //     white-space: nowrap;
+
             .result-find__poster {
                 height: 141px;
                 width: 94px;
@@ -31,6 +36,16 @@
 
                 .result-find__text {
                     margin-top: .5rem;
+                    max-height: 80px;
+
+                    & span {
+                        display: -webkit-box;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+
                 }
             }
         }

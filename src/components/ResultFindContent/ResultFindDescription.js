@@ -1,7 +1,7 @@
-import React from "react";
+import React, {memo} from "react";
 import { Box, Typography } from "@mui/material";
 
-const ResultFindDescription = ({film}) => {
+const ResultFindDescription = memo(({film}) => {
     return (
         <Box className="result-find__description">
             <Typography
@@ -26,5 +26,5 @@ const ResultFindDescription = ({film}) => {
             </Box>
         </Box>
     )
-}
+})
 export default ResultFindDescription;
