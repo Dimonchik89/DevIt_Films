@@ -1,4 +1,5 @@
 @import "../../style/vars.scss";
+@import "../../style/mixin.scss";
 
 .film-card {
     margin-bottom: 2rem;
@@ -14,9 +15,25 @@
     border-radius: 1rem;
     overflow: hidden;
 
+    .film-poster__wrapper {
+        width: 258px;
+        height: 356px;
+
+        @include _979 {
+            width: auto;
+        }
+
+        .film__poster {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
     .film-raiting__wrapper {
         padding: 0 1rem;
         position: relative;
+
         .film-raiting {
             width: 3rem;
             height: 3rem;

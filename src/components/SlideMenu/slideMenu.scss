@@ -1,0 +1,18 @@
+@import "../../style/vars.scss";
+
+.slide-menu {
+
+    .slide-menu__wrapper {
+        padding: 1rem 0;
+
+        .slide-menu__item {
+            padding: 0 1.5rem;
+            background: $primary;
+            color: $gray;
+
+            & a {
+                color: $gray;
+            }
+        }
+    }
+}

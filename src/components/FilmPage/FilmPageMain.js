@@ -5,8 +5,8 @@ import { useLocation } from "react-router-dom";
 import useHttp from "../../hooks/useHttp";
 import { filmFetching, filmFetched, filmFetchingError } from "../../store/singleFilm/filmAction";
 import FilmPageIntro from "./FilmPageIntro/FilmPageIntro";
-import FilnPageActor from "./FilmPageActor/FilmPageActor";
-
+import FilmPageActor from "./FilmPageActor/FilmPageActor";
+import Spiner from "../Spiner/Spiner";
 const FilmPageReviewBlock = lazy(() => import("./FilmPageReview/FilmPageReviewBlock"));
 const FilmPageMedia = lazy(() => import("./FilmPageMedia/FilmPageMedia"));
 const FilmPageRecomend = lazy(() => import("./FilmPageRecomend/FilmPageRecomend"));
@@ -28,11 +28,11 @@ const FilmPageMain = () => {
     }
 
     return (
-        <Suspense fallback={<h4>Loading...</h4>}>
+        <Suspense fallback={<Spiner/>}>
             <Box>
                 <FilmPageIntro film={film}/>
                 <Container maxWidth="xl">
-                    <FilnPageActor film={film}/>
+                    <FilmPageActor film={film}/>
                     <FilmPageReviewBlock/>
                     <FilmPageMedia/>
                     <FilmPageRecomend/>

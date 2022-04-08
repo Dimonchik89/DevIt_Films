@@ -12,21 +12,32 @@ const FilmPageRecomend = () => {
     const { getResponse } = useHttp();
     const { pathname } = useLocation();
     useEffect(() => {
-        getResponse(`${pathname}/recommendations?language=ru-Ru&`)
+        getResponse(`${pathname}/recommendations?language=ru-RU&`)
             .then(data => setFilms(data.results))
     }, [pathname])
-    const setting = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4
+    let setting;
+    if(films?.length < 4) {
+        setting = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: films?.length,
+            slidesToScroll: films?.length
+        }
+    } else {
+        setting = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 4
+        }
     }
     const content = films?.map(film => <FilmPageRecomendItem key={nanoid()} film={film}/>)
     return (
         <>
             <Box className="film-page__recomend">
-                <Box>
+                <Box sx={{mb: "1rem"}}>
                     <Typography
                         variant="h4"
                         component="h4"

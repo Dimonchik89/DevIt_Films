@@ -1,7 +1,13 @@
+@import "../../style/mixin.scss";
+
 .skeleton {
     margin-top: 3rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+
+    @include _979 {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .skeleton__item {
         margin-bottom: 1.5rem;

@@ -3,6 +3,7 @@ import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { nanoid } from "nanoid";
 import FilmPageMediaItem from "./FilmPageMediaItem";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import "../filmPage.scss";
 
 const mediaTabsArr = [
@@ -44,29 +45,37 @@ const FilmPageMedia = () => {
 
     const tabs = mediaTabsArr.map(item => <Tab key={nanoid()} label={item.title} {...a11yProps(item.id)} />)
     const tabsContent = mediaTabsArr.map(item => (
-        <FilmPageMediaItem
-            key={nanoid()}
-            value={value}
-            index={item.id}
-            pathname={pathname}
-            url={item.url}
-            objectKey={item.objectKey}
-            src={item.src}/>)
-        )
+        <CSSTransition key={nanoid()} timeout={500} classNames="item" unmountOnExit mountOnEnter appear>
+            <FilmPageMediaItem
+                key={nanoid()}
+                value={value}
+                index={item.id}
+                pathname={pathname}
+                url={item.url}
+                objectKey={item.objectKey}
+                src={item.src}/>
+        </CSSTransition>)
+    )
+
     return (
         <Box className="film-page__media">
-            <Typography
-                variant="h4"
-                component="h4"
-            >
-                Медиа
-            </Typography>
+            <Box sx={{mb: "1rem"}}>
+                <Typography
+                    variant="h4"
+                    component="h4"
+                >
+                    Медиа
+                </Typography>
+            </Box>
+
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {tabs}
                 </Tabs>
             </Box>
-            {tabsContent}
+            <TransitionGroup>
+                {tabsContent}
+            </TransitionGroup>
         </Box>
     )
 }

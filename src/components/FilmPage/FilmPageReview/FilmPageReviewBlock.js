@@ -20,16 +20,21 @@ const FilmPageReviewBlock = () => {
             return <ReviewItem key={nanoid()} review={review}/>
         }
     })
-    return (
-        <Box className="review-block">
-            <Stack spacing={2}>
-                {reviewContnt}
-            </Stack>
-            <Box sx={{my: "2rem"}}>
-                <Button onClick={() => navigate("reviews", {state: {reviews: reviews}})} color="primary">К обсуждениям</Button>
+    if(reviews?.length) {
+        return (
+            <Box className="review-block">
+                <Stack spacing={2}>
+                    {reviewContnt}
+                </Stack>
+                <Box sx={{my: "2rem"}}>
+                    <Button onClick={() => navigate("reviews", {state: {reviews: reviews}})} color="primary">К обсуждениям</Button>
+                </Box>
             </Box>
-        </Box>
-
+        )
+    }
+    return (
+        <>
+        </>
     )
 }
 export default FilmPageReviewBlock;

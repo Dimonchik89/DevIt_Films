@@ -11,7 +11,7 @@ const FilmPageIntroHeader = memo(({film}) => {
                 component="h3"
                 className="film-page__intro-title"
             >
-                {film?.title}
+                {film?.title || film?.name}
             </Typography>
             <Box>
                 <Typography
@@ -19,7 +19,7 @@ const FilmPageIntroHeader = memo(({film}) => {
                     component="span"
                     className="film-page__intro-subtitle"
                 >
-                    {film?.release_date}
+                    {film?.release_date || film?.first_air_date}
                 </Typography>
                 <Typography
                     variant="body1"

@@ -13,7 +13,7 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src}) =
         setting = {
             dots: true,
             infinite: true,
-            speed: 500,
+            speed: 300,
             slidesToShow: 2,
             slidesToScroll: 2
         }
@@ -21,7 +21,7 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src}) =
         setting = {
             dots: true,
             infinite: true,
-            speed: 500,
+            speed: 300,
             slidesToShow: 4,
             slidesToScroll: 4
         }

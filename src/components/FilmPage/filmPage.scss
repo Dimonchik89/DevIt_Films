@@ -110,6 +110,7 @@
 
 .film-page__media {
     margin-top: 3rem;
+    height: 462px;
 
     .film-page__slider-wrapper {
         min-height: 300px;
@@ -125,6 +126,8 @@
 .film-page__recomend {
     margin-top: 3rem;
     padding: 1.5rem 0;
+    position: relative;
+    z-index: 2;
 
     .film-recomend__wrapper {
         display: inline-block;
@@ -134,9 +137,39 @@
             overflow: hidden;
             position: relative;
 
+            &:hover .film-recomend__info {
+                visibility: visible;
+            }
+
             .film-recomend__info {
-                padding: 1rem;
+                position: absolute;
+                visibility: hidden;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                padding: .5rem;
+                background: rgba(255, 255, 255, .6);
+                display: flex;
+                align-items: center;
             }
         }
     }
+}
+
+.item-enter {
+    opacity: 0;
+}
+.item-enter-active {
+    opacity: 1;
+    transition: all 500ms ease-in;
+}
+.item-exit {
+    opacity: 1;
+    display: block;
+    transition: all 500ms ease-in;
+}
+.item-exit-active {
+    opacity: 0;
+    display: none;
 }

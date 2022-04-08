@@ -1,17 +1,26 @@
 import React, {memo} from "react";
 import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import "../../../style/style.scss";
 
 const FilmPageRecomendItem = memo(({film}) => {
     return (
-        <Link to={`/${film.media_type}/${film.id}`}>
             <Box>
                 <Box className="film-recomend__wrapper">
                     <Box className="film-recomend__img-wrapper">
-                        <img src={`https://www.themoviedb.org/t/p/w250_and_h141_face${film.backdrop_path}`} alt={film.release_date} />
+                        <Link to={`/${film.media_type}/${film.id}`}>
+                            <img src={`https://www.themoviedb.org/t/p/w250_and_h141_face${film.backdrop_path}`} alt={film.release_date} />
+                        </Link>
                         <Box className="film-recomend__info">
-
+                            <CalendarMonthIcon/>
+                            <Typography
+                                variant="body2"
+                                component="span"
+                                sx={{ml: ".5rem"}}
+                            >
+                                {film.release_date || film.first_air_date}
+                            </Typography>
                         </Box>
                     </Box>
                     <Box className="flex space-beteen" sx={{mt: "1rem"}}>
@@ -19,7 +28,7 @@ const FilmPageRecomendItem = memo(({film}) => {
                             variant="body2"
                             component="span"
                         >
-                            {film.title}
+                            {film.title || film.name}
                         </Typography>
                         <Typography
                             variant="body2"
@@ -29,9 +38,7 @@ const FilmPageRecomendItem = memo(({film}) => {
                         </Typography>
                     </Box>
                 </Box>
-
             </Box>
-        </Link>
     )
 })
 export default FilmPageRecomendItem;

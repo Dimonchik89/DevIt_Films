@@ -27,13 +27,24 @@ const Intro = () => {
             <Box className="intro-container">
                 <Container maxWidth="xl">
                     <Box className="intro-content">
-                        <Typography
+                        <Box
+                            className="color-white bold"
+
+                        >
+                            <Typography sx={{fontSize: {xl: "60px", lg: "50px", md: "40px"}}}>
+                                Добро пожаловать.
+                            </Typography>
+
+                        </Box>
+                        {/* <Typography
+                            sx={{fontSize: {lg: "10px", md: "10px"}}}
                             variant="h2"
                             component="h2"
                             className="color-white bold"
                         >
                             Добро пожаловать.
-                        </Typography>
+                        </Typography> */}
+
                         <Typography
                             variant="h3"
                             component="h3"
