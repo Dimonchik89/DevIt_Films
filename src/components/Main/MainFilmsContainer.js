@@ -4,7 +4,7 @@ import FilmCard from "../Film/FilmCard";
 import { nanoid } from "nanoid";
 import SkeletonPage from "../Skeleton/SkeletonPage";
 import { useDispatch, useSelector } from "react-redux";
-import { filmsFetching, filmsFetched, filmsFetchingError } from "../../store/popularMain/popularMainAction";
+import { filmsFetching, filmsFetched, filmsFetchingError, resetFilms } from "../../store/popularMain/popularMainAction";
 import useHttp from "../../hooks/useHttp";
 import "./main.scss";
 
@@ -13,6 +13,7 @@ const MainFilmsContainer = memo(({moreFilms}) => {
     const dispatch = useDispatch();
     const {loading, films, popularUrl} = useSelector(state => state.popularMainReducer)
     useEffect(() => {
+        dispatch(resetFilms())
         dispatch(filmsFetching());
         getResponse(`${popularUrl}/popular?language=ru-Ru&page=${moreFilms}&`)
             .then(films => dispatch(filmsFetched(films.results)))
