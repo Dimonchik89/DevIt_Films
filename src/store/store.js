@@ -1,9 +1,7 @@
-import { createStore, combineReducers } from "redux";
-import { reducer as formReducer } from 'redux-form'
-import { popularMainReducer } from "./popularMain/popularMainReducer";
-import { findReducer } from "./find/findReducer";
-import { filmReducer } from "./singleFilm/filmReducer";
-import { personReducer } from "./persone/personReducer";
+import { createStore, applyMiddleware } from "redux";
+import reducer from "./reducer";
+import multiClientMiddleware from "../middlewares/axios";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(combineReducers({form: formReducer, popularMainReducer, findReducer, filmReducer, personReducer}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(multiClientMiddleware)))
 export default store;

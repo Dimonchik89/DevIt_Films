@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions"
-import { personFetching, personFethced, personFetchingError, setTotalPages } from "./personAction"
+import { fetchPersone, setTotalPages } from "./action"
 
 const initialState = {
     person: [],
@@ -15,7 +15,8 @@ const personFetchingHandler = (state) => {
 const personFethcedHandler = (state, action) => {
     return {
         ...state,
-        person: action.payload,
+        person: action.payload.data.results,
+        totalPages: action.payload.data.total_pages,
         loading: "idle"
     }
 }
@@ -28,13 +29,13 @@ const personFetchingErrorHandler = (state) => {
 const setTotalPagesHandler = (state, action) => {
     return {
         ...state,
-        totalPages: action.payload
+        totalPages: action.payload.data.totalPages
     }
 }
 
 export const personReducer = handleActions({
-    [personFetching]: personFetchingHandler,
-    [personFethced]: personFethcedHandler,
-    [personFetchingError]: personFetchingErrorHandler,
+    [fetchPersone]: personFetchingHandler,
+    [fetchPersone.success]: personFethcedHandler,
+    [fetchPersone.fail]: personFetchingErrorHandler,
     [setTotalPages]: setTotalPagesHandler
 }, initialState)

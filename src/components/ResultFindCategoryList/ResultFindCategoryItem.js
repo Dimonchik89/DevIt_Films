@@ -1,6 +1,6 @@
 import React, {useEffect, useState, memo} from "react";
 import { Box, ListItemButton, ListItemText, Typography } from "@mui/material";
-import { changeShowFindCategory } from "../../store/find/findAction";
+import { changeShowFindCategory } from "../../store/find/action";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./ResultFindCategoryList.scss";

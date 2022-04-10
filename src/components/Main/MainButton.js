@@ -1,11 +1,11 @@
 import React, {memo} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changePopularCategory } from "../../store/popularMain/popularMainAction";
+import { useDispatch, connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import {  changePopularCategory, popularUrl } from "../../store/popularMain";
 import "../Button/button.scss";
 
-const MainButton = memo(({title, name, url}) => {
+const MainButton = memo(({title, name, url, popularUrl, changePopularCategory}) => {
     const dispatch = useDispatch();
-    const {popularUrl} = useSelector(state => state.popularMainReducer)
     const activeClass = popularUrl === url ? "active" : null;
     const handleChange = () => {
             dispatch(changePopularCategory(url))
@@ -20,4 +20,13 @@ const MainButton = memo(({title, name, url}) => {
 
     )
 })
-export default MainButton;
+
+const mapState = createStructuredSelector({
+    popularUrl
+})
+
+const mapDispatch = {
+    changePopularCategory
+}
+
+export default connect(mapState, mapDispatch)(MainButton);

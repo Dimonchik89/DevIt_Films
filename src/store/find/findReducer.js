@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions";
-import { setFind, changeShowFindCategory } from "./findAction";
+import { setFind, changeShowFindCategory } from "./action";
 
 const initialState = {
     findResult: [],
@@ -8,7 +8,7 @@ const initialState = {
 const setFindHandler = (state, action) => {
     return {
         ...state,
-        findResult: action.payload
+        findResult: action.payload.data.results
     }
 }
 const changeShowFindCategoryHandle = (state, action) => {
@@ -19,6 +19,6 @@ const changeShowFindCategoryHandle = (state, action) => {
 }
 
 export const findReducer = handleActions({
-    [setFind]: setFindHandler,
+    [setFind.success]: setFindHandler,
     [changeShowFindCategory]: changeShowFindCategoryHandle
 }, initialState)

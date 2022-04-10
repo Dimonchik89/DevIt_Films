@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { Box, CircularProgress } from "@mui/material";
-import { useSelector } from "react-redux";
 import ResultFindContentItem from "./ResultFindContentItem";
 import { nanoid } from "nanoid";
 import "./resultFindContent.scss";
 
-const ResultFindContet = () => {
+const ResultFindContet = memo(({findResult, showFindCategory}) => {
+    console.log(findResult)
     const [actualArr, setActualArr] = useState(null);
-    const { showFindCategory, findResult } = useSelector(state => state.findReducer);
     useEffect(() => {
         findResult.forEach(item => {
             if(Object.keys(item)[0] === showFindCategory) {
@@ -30,5 +29,7 @@ const ResultFindContet = () => {
             {content}
         </Box>
     )
-}
+})
+
+
 export default ResultFindContet;

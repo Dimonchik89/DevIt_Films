@@ -1,25 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import Find from "../Find/Find";
 import useHttp from "../../hooks/useHttp";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { useContains } from "../../hooks/useContaine";
-import { setFind } from "../../store/find/findAction";
+import { setFind } from "../../store/find";
 import bg from "../../img/bg.jpg"
 import "../../style/style.scss";
 import "./intro.scss";
 
-const Intro = () => {
+const Intro = ({setFind}) => {
     const dispatch = useDispatch();
     const {getResponse} = useHttp()
     const {newArr, hashMapReturn} = useContains();
     const onSubmit = (formData) => {
-        getResponse(`/search/multi?query=${formData.find}&language=ru-Ru&`)
-            .then(response => {
-                dispatch(setFind(hashMapReturn(response.results)))
-            })
+        console.log("intro");
+        // getResponse(`/search/multi?query=${formData.find}&language=ru-Ru&`)
+        //     .then(response => {
+        //         dispatch(setFind(hashMapReturn(response.results)))
+        //     })
+        setFind(formData.find)
     }
     return (
         <Box className="intro">
@@ -59,4 +61,9 @@ const Intro = () => {
         </Box>
     )
 }
-export default Intro;
+
+const mapDispatch = {
+    setFind
+}
+
+export default connect(null, mapDispatch)(Intro);

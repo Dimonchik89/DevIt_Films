@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions";
-import { filmFetching, filmFetched, filmFetchingError } from "./filmAction";
+import { fetchingFilm } from "./action";
 
 const initialState = {
     film: null,
@@ -15,7 +15,7 @@ const filmFetchingHandler = (state) => {
 const filmFetchedHandler = (state, action) => {
     return {
         ...state,
-        film: action.payload,
+        film: action.payload.data,
         loading: "idle"
     }
 }
@@ -27,7 +27,7 @@ const filmFetchingErrorHandler = (state) => {
 }
 
 export const filmReducer = handleActions({
-    [filmFetching]: filmFetchingHandler,
-    [filmFetched]: filmFetchedHandler,
-    [filmFetchingError]: filmFetchingErrorHandler
+    [fetchingFilm]: filmFetchingHandler,
+    [fetchingFilm.success]: filmFetchedHandler,
+    [fetchingFilm.fail]: filmFetchingErrorHandler
 }, initialState);

@@ -1,25 +1,16 @@
 import React, { useEffect, memo } from "react";
 import { Box, CircularProgress } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import useHttp from "../../hooks/useHttp";
 import PersoneItem from "./PersoneItem";
-import { personFetching, personFethced, personFetchingError, setTotalPages } from "../../store/persone/personAction";
-import { useDispatch, useSelector } from "react-redux";
+import { fetchPersone, setTotalPages, person, totalPages, loading } from "../../store/persone";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { nanoid } from "nanoid";
 
-const PersoneContent = memo(({currentPage}) => {
+const PersoneContent = memo(({currentPage, fetchPersone, person}) => {
     const location = useLocation();
-    const dispatch = useDispatch()
-    const { person } = useSelector(state => state.personReducer)
-    const {getResponse} = useHttp();
     useEffect(() => {
-        dispatch(personFetching());
-        getResponse(`${location.pathname}/popular?language=ru-Ru&page=${currentPage}&`)
-            .then(person => {
-                dispatch(personFethced(person.results))
-                dispatch(setTotalPages(person.total_pages))
-            })
-            .catch(dispatch(personFetchingError()))
+        fetchPersone(location.pathname, currentPage)
     }, [currentPage])
 
     if(person.length === 0) {
@@ -27,7 +18,7 @@ const PersoneContent = memo(({currentPage}) => {
             <CircularProgress/>
         </Box>
     }
-    const content = person.map(actor => <PersoneItem key={nanoid()} actor={actor}/>)
+    const content = person?.map(actor => <PersoneItem key={nanoid()} actor={actor}/>)
 
     return (
         <Box className="person__content">
@@ -35,4 +26,16 @@ const PersoneContent = memo(({currentPage}) => {
         </Box>
     )
 })
-export default PersoneContent;
+
+const mapState = createStructuredSelector({
+    person,
+    totalPages,
+    loading
+})
+
+const mapDispatch = {
+    fetchPersone,
+    setTotalPages
+}
+
+export default connect(mapState, mapDispatch)(PersoneContent);

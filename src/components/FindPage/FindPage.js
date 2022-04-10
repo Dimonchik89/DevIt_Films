@@ -1,42 +1,48 @@
-import React, {useEffect } from "react";
+import React, { useEffect, memo } from "react";
 import { Container, Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import useHttp from "../../hooks/useHttp";
+import { connect } from "react-redux";
 import ResultFindCategoryList from "../ResultFindCategoryList/ResultFindCategoryList";
-import ResultPageContent from "../ResultFindContent/ResultFindContent";
+import ResultFindContet from "../ResultFindContent/ResultFindContent";
 import { useContains } from "../../hooks/useContaine";
-import { setFind } from "../../store/find/findAction";
+import { createStructuredSelector } from "reselect";
+import { setFind, findResult, showFindCategory } from "../../store/find";
 import "../Find/find.scss";
 
-const FindPage = () => {
+const FindPage = memo(({ setFind, findResult, showFindCategory }) => {
     const location = useLocation();
-    const {getResponse} = useHttp();
-    const dispatch = useDispatch();
-    const {newArr, hashMap, hashMapReturn} = useContains();
+    const { hashMapReturn } = useContains();
     const searchParams = decodeURIComponent(location.search.split(/[?=]/).splice(2))
 
     useEffect(() => {
-        getResponse(`/search/multi?query=${searchParams}&language=ru-Ru&`)
-        .then(response => {
-            dispatch(setFind(hashMapReturn(response.results)))
-            hashMap(response.results)
-        })
+        setFind(searchParams)
     }, [])
+
+    const searchResult = hashMapReturn(findResult);
 
     return (
         <div className="find-page">
             <Container maxWidth="xl">
                 <Grid container spacing={5}>
                     <Grid item xl={3} lg={3}>
-                        <ResultFindCategoryList newArr={newArr}/>
+                        <ResultFindCategoryList newArr={searchResult}/>
                     </Grid>
                     <Grid item xl={9} lg={9}>
-                        <ResultPageContent/>
+                        <ResultFindContet findResult={searchResult} showFindCategory={showFindCategory}/>
                     </Grid>
                 </Grid>
             </Container>
         </div>
     )
+})
+
+const mapState = createStructuredSelector({
+    findResult,
+    showFindCategory
+})
+
+const mapDispatch = {
+    setFind
 }
-export default FindPage;
+
+export default connect(mapState, mapDispatch)(FindPage);

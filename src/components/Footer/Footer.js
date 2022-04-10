@@ -2,11 +2,12 @@ import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import FooterList from "./FooterList";
 import { footerListArr } from "./footerListArr";
+import { nanoid } from "nanoid";
 import "../../style/style.scss";
 import "./footer.scss";
 
 const Footer = () => {
-    const footerListContent = footerListArr.map(list => <FooterList list={list}/>)
+    const footerListContent = footerListArr.map(list => <FooterList key={nanoid()} list={list}/>)
     return (
         <footer>
             <Container maxWidth="xl">

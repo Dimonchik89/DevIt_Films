@@ -1,5 +1,5 @@
 import { handleActions } from "redux-actions";
-import { filmsFetching, filmsFetched, filmsFetchingError, changePopularCategory, resetFilms, setTotalPage } from "./popularMainAction";
+import { fetchingFilmsMain, fetchingFilmsCategory, changePopularCategory, resetFilms, setTotalPage } from "./action";
 
 const initialState = {
     loading: "idle",
@@ -17,7 +17,8 @@ const filmsFetchedHandler = (state, action) => {
     return {
         ...state,
         loading: "idle",
-        films: [...state.films, ...action.payload]
+        films: [...state.films, ...action.payload.data.results],
+        totalPage: action.payload.data.total_pages
     }
 }
 const filmsFetchingErrorHandler = (state) => {
@@ -47,9 +48,12 @@ const setTotalPageHandler = (state, action) => {
 }
 
 export const popularMainReducer = handleActions({
-    [filmsFetching]: filmsFetchingHandle,
-    [filmsFetched]: filmsFetchedHandler,
-    [filmsFetchingError]: filmsFetchingErrorHandler,
+    [fetchingFilmsMain]: filmsFetchingHandle,
+    [fetchingFilmsMain.success]: filmsFetchedHandler,
+    [fetchingFilmsMain.error]: filmsFetchingErrorHandler,
+    [fetchingFilmsCategory]: filmsFetchingHandle,
+    [fetchingFilmsCategory.success]: filmsFetchedHandler,
+    [fetchingFilmsCategory.error]: filmsFetchingErrorHandler,
     [changePopularCategory]: changePopularCategoryHandler,
     [resetFilms]: resetFilmsHandler,
     [setTotalPage]: setTotalPageHandler
