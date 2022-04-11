@@ -13,5 +13,4 @@ export const setFind = createRequestAction(SET_FIND, (searchParams) => {
     }
 })
 
-// export const setFind = createAction(SET_FIND);
 export const changeShowFindCategory = createAction(CHANGE_SHOW_FIND_CATEGORY);

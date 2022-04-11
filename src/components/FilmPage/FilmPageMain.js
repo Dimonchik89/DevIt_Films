@@ -11,14 +11,14 @@ const FilmPageReviewBlock = lazy(() => import("./FilmPageReview/FilmPageReviewBl
 const FilmPageMedia = lazy(() => import("./FilmPageMedia/FilmPageMedia"));
 const FilmPageRecomend = lazy(() => import("./FilmPageRecomend/FilmPageRecomend"));
 
-const FilmPageMain = ({ fetchingFilm, film }) => {
+const FilmPageMain = ({ fetchingFilm, film, loading }) => {
     const location = useLocation();
     useEffect(() => {
         fetchingFilm(location.pathname)
     }, [location])
 
-    if(!film) {
-        <span>Loading...</span>
+    if(loading) {
+        <Spiner/>
     }
 
     return (
@@ -42,7 +42,7 @@ const mapState = createStructuredSelector({
 })
 
 const mapDispatch = {
-    fetchingFilm
+    fetchingFilm,
 }
 
 export default connect(mapState, mapDispatch)(FilmPageMain);

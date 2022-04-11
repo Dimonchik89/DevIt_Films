@@ -1,28 +1,27 @@
-import React, { useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import { Box, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import useHttp from "../../../hooks/useHttp";
 import Slider from "react-slick";
 import FilmPageRecomendItem from "./FilmPageRecomendItem";
+import { fetchFilmRecomend, recomend } from "../../../store/singleFilm";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { nanoid } from "nanoid";
 import "../filmPage.scss";
 
-const FilmPageRecomend = () => {
-    const [ films, setFilms ] = useState(null);
-    const { getResponse } = useHttp();
+const FilmPageRecomend = ({ fetchFilmRecomend, recomend }) => {
     const { pathname } = useLocation();
     useEffect(() => {
-        getResponse(`${pathname}/recommendations?language=ru-RU&`)
-            .then(data => setFilms(data.results))
+        fetchFilmRecomend(pathname)
     }, [pathname])
     let setting;
-    if(films?.length < 4) {
+    if(recomend?.length < 4) {
         setting = {
             dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: films?.length,
-            slidesToScroll: films?.length
+            slidesToShow: recomend?.length,
+            slidesToScroll: recomend?.length
         }
     } else {
         setting = {
@@ -33,7 +32,7 @@ const FilmPageRecomend = () => {
             slidesToScroll: 4
         }
     }
-    const content = films?.map(film => <FilmPageRecomendItem key={nanoid()} film={film}/>)
+    const content = recomend?.map(film => <FilmPageRecomendItem key={nanoid()} film={film}/>)
     return (
         <>
             <Box className="film-page__recomend">
@@ -54,4 +53,13 @@ const FilmPageRecomend = () => {
         </>
     )
 }
-export default FilmPageRecomend;
+
+const mapState = createStructuredSelector({
+    recomend
+})
+
+const mapDispatch = {
+    fetchFilmRecomend
+}
+
+export default connect(mapState, mapDispatch)(FilmPageRecomend);

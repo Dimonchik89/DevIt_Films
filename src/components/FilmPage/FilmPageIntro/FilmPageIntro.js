@@ -22,4 +22,3 @@ const FilmPageIntro = memo(({film}) => {
     )
 })
 export default FilmPageIntro;
-//title, release_date, vote_average, tagline, overview, genres,

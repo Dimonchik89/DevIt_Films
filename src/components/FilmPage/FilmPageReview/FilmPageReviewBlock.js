@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Box, Button, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
-import useHttp from "../../../hooks/useHttp";
 import ReviewItem from "../../Review/ReviewItem";
 import { nanoid } from "nanoid";
+import { fetchFilmReview, reviews } from "../../../store/singleFilm";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import "../../Review/review.scss";
 
-const FilmPageReviewBlock = () => {
-    const [reviews, setReviews] = useState(null);
-    const { getResponse } = useHttp();
+const FilmPageReviewBlock = ({ fetchFilmReview, reviews }) => {
     const { pathname } = useLocation();
     const navigate = useNavigate();
     useEffect(() => {
-        getResponse(`${pathname}/reviews?`)
-            .then(data => setReviews(data.results))
+        fetchFilmReview(pathname)
     }, [pathname])
     const reviewContnt = reviews?.map((review, i) => {
         if(i < 3) {
@@ -37,4 +36,13 @@ const FilmPageReviewBlock = () => {
         </>
     )
 }
-export default FilmPageReviewBlock;
+
+const mapState = createStructuredSelector({
+    reviews
+})
+
+const mapDispatch = {
+    fetchFilmReview
+}
+
+export default connect(mapState, mapDispatch)(FilmPageReviewBlock);

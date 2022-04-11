@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, memo } from "react";
 import { useParams } from "react-router-dom";
-import useHttp from "../../../hooks/useHttp";
 import Slider from "react-slick";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import ActorCard from "../../Actor/ActorCard";
 import { nanoid } from "nanoid";
+import { actors, fetchFilmActor } from "../../../store/singleFilm";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const FilmPageActor = () => {
-    const [ actors, setActors ] = useState(null)
-    const  { getResponse } = useHttp();
+const FilmPageActor = memo(({fetchFilmActor, actors}) => {
     const { id } = useParams();
     useEffect(() => {
-        getResponse(`/movie/${id}/credits?`)
-            .then(data => setActors(data.cast))
+            fetchFilmActor(id)
     }, [id])
 
     const settings = actors?.length > 8 ? {
@@ -39,5 +38,14 @@ const FilmPageActor = () => {
             </Slider>
         </Box>
     )
+})
+
+const mapState = createStructuredSelector({
+    actors,
+})
+
+const mapDispatch = {
+    fetchFilmActor
 }
-export default FilmPageActor;
+
+export default connect(mapState, mapDispatch)(FilmPageActor);

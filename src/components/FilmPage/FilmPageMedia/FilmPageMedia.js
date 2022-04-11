@@ -43,7 +43,7 @@ const FilmPageMedia = () => {
         };
       }
 
-    const tabs = mediaTabsArr.map(item => <Tab key={nanoid()} label={item.title} {...a11yProps(item.id)} />)
+    const tabs = mediaTabsArr.map((item, i) => <Tab key={nanoid()} label={item.title} {...a11yProps(i)} />)
     const tabsContent = mediaTabsArr.map(item => (
         <CSSTransition key={nanoid()} timeout={500} classNames="item" unmountOnExit mountOnEnter appear>
             <FilmPageMediaItem

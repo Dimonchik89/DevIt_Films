@@ -1,13 +1,13 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useEffect, memo } from "react";
+import { connect } from "react-redux";
 import { Box } from "@mui/material";
-import useHttp from "../../../hooks/useHttp";
 import Slider from "react-slick";
 import { nanoid } from "nanoid";
+import { fetchFilmMedia, media } from "../../../store/singleFilm";
+import { createStructuredSelector } from "reselect";
 import "../filmPage.scss";
 
-const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src}) => {
-    const [media, setMedia] = useState(null)
-    const { getResponse } = useHttp();
+const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src, fetchFilmMedia, media}) => {
     let setting;
     if(objectKey === "backdrops") {
         setting = {
@@ -28,16 +28,18 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src}) =
     }
 
     useEffect(() => {
-        getResponse(`${pathname}${url}?`)
-        .then(data => {
-            setMedia(data[objectKey])
-        })
+        fetchFilmMedia(pathname, url)
     }, [])
     let content;
+
+    if(!media) {
+        return null
+    }
+
     if(objectKey === "results") {
         // content = media?.map((item, i) => i < 20 ? <iframe width="560" height="315" src={`${item.src}${item?.file_path}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> : null)
     } else {
-        content = media?.map((item, i) => i < 24 ? <img className="film-page__media-slide" key={nanoid()} src={`${src}${item?.file_path}`} alt="image"/> : null)
+        content = media[objectKey]?.map((item, i) => i < 24 ? <img className="film-page__media-slide" key={nanoid()} src={`${src}${item?.file_path}`} alt="image"/> : null)
     }
     return (
         <>
@@ -58,4 +60,13 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src}) =
         </>
     )
 })
-export default FilmPageMediaItem;
+
+const mapState = createStructuredSelector ({
+    media,
+})
+
+const mapDispatch = {
+    fetchFilmMedia
+}
+
+export default connect(mapState, mapDispatch)(FilmPageMediaItem);
