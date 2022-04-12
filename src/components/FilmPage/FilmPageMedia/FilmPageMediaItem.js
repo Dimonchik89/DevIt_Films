@@ -1,13 +1,10 @@
-import React, { useEffect, memo } from "react";
-import { connect } from "react-redux";
+import React, { memo } from "react";
 import { Box } from "@mui/material";
 import Slider from "react-slick";
 import { nanoid } from "nanoid";
-import { fetchFilmMedia, media } from "../../../store/singleFilm";
-import { createStructuredSelector } from "reselect";
 import "../filmPage.scss";
 
-const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src, fetchFilmMedia, media}) => {
+const FilmPageMediaItem = memo(({value, index, objectKey, src, media}) => {
     let setting;
     if(objectKey === "backdrops") {
         setting = {
@@ -26,10 +23,6 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src, fe
             slidesToScroll: 4
         }
     }
-
-    useEffect(() => {
-        fetchFilmMedia(pathname, url)
-    }, [])
     let content;
 
     if(!media) {
@@ -61,12 +54,4 @@ const FilmPageMediaItem = memo(({value, index, url, pathname, objectKey, src, fe
     )
 })
 
-const mapState = createStructuredSelector ({
-    media,
-})
-
-const mapDispatch = {
-    fetchFilmMedia
-}
-
-export default connect(mapState, mapDispatch)(FilmPageMediaItem);
+export default FilmPageMediaItem;

@@ -16,11 +16,6 @@ const Intro = ({setFind}) => {
     const {getResponse} = useHttp()
     const {newArr, hashMapReturn} = useContains();
     const onSubmit = (formData) => {
-        console.log("intro");
-        // getResponse(`/search/multi?query=${formData.find}&language=ru-Ru&`)
-        //     .then(response => {
-        //         dispatch(setFind(hashMapReturn(response.results)))
-        //     })
         setFind(formData.find)
     }
     return (

@@ -62,4 +62,3 @@ const FilmPageIntroDescription = memo(({film}) => {
     )
 })
 export default FilmPageIntroDescription;
-//production_companies

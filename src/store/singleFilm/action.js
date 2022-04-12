@@ -24,11 +24,11 @@ export const fetchFilmActor = createRequestAction(FETCH_FILM_ACTOR, (id) => {
     }
 })
 
-export const fetchFilmMedia = createRequestAction(FETCH_FILM_MEDIA, (pathname, url) => {
+export const fetchFilmMedia = createRequestAction(FETCH_FILM_MEDIA, (pathname) => {
     return {
         request: {
             method: "GET",
-            url: `/${pathname}${url}`
+            url: `/${pathname}`
         }
     }
 })

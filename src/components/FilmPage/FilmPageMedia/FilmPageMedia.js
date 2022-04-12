@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { nanoid } from "nanoid";
 import FilmPageMediaItem from "./FilmPageMediaItem";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { fetchFilmMedia, media } from "../../../store/singleFilm";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import "../filmPage.scss";
 
 const mediaTabsArr = [
@@ -30,7 +33,7 @@ const mediaTabsArr = [
     }
 ]
 
-const FilmPageMedia = () => {
+const FilmPageMedia = ({ fetchFilmMedia, media }) => {
     const { pathname } = useLocation();
     const [value, setValue] = useState(0)
     const handleChange = (event, newValue) => {
@@ -41,7 +44,11 @@ const FilmPageMedia = () => {
           id: `simple-tab-${index}`,
           'aria-controls': `simple-tabpanel-${index}`,
         };
-      }
+    }
+
+    useEffect(() => {
+        fetchFilmMedia(`${pathname}/images`)
+    }, [])
 
     const tabs = mediaTabsArr.map((item, i) => <Tab key={nanoid()} label={item.title} {...a11yProps(i)} />)
     const tabsContent = mediaTabsArr.map(item => (
@@ -50,10 +57,9 @@ const FilmPageMedia = () => {
                 key={nanoid()}
                 value={value}
                 index={item.id}
-                pathname={pathname}
-                url={item.url}
                 objectKey={item.objectKey}
-                src={item.src}/>
+                src={item.src}
+                media={media}/>
         </CSSTransition>)
     )
 
@@ -79,4 +85,13 @@ const FilmPageMedia = () => {
         </Box>
     )
 }
-export default FilmPageMedia;
+
+const mapState = createStructuredSelector({
+    media
+})
+
+const mapDispatch = {
+    fetchFilmMedia
+}
+
+export default connect(mapState, mapDispatch)(FilmPageMedia);
