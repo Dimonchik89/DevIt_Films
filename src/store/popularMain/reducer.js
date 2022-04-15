@@ -18,7 +18,7 @@ const filmsFetchedHandler = (state, action) => {
         ...state,
         loading: "idle",
         films: [...state.films, ...action.payload.data.results],
-        totalPage: action.payload.data.total_pages
+        totalPage: action.payload?.data?.total_pages || 1
     }
 }
 const filmsFetchingErrorHandler = (state) => {

@@ -8,7 +8,7 @@ const initialState = {
 const setFindHandler = (state, action) => {
     return {
         ...state,
-        findResult: action.payload.data.results
+        findResult: action.payload?.data?.results || []
     }
 }
 const changeShowFindCategoryHandle = (state, action) => {

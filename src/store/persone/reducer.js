@@ -16,7 +16,7 @@ const personFethcedHandler = (state, action) => {
     return {
         ...state,
         person: action.payload.data.results,
-        totalPages: action.payload.data.total_pages,
+        totalPages: action.payload?.data?.total_pages || 1,
         loading: "idle"
     }
 }
@@ -29,7 +29,7 @@ const personFetchingErrorHandler = (state) => {
 const setTotalPagesHandler = (state, action) => {
     return {
         ...state,
-        totalPages: action.payload.data.totalPages
+        totalPages: action.payload?.data?.totalPages || 1
     }
 }
 

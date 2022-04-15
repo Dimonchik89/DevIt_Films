@@ -20,7 +20,7 @@ const filmFetchingHandler = (state) => {
 const filmFetchedHandler = (state, action) => {
     return {
         ...state,
-        film: action.payload.data,
+        film: action.payload?.data || [],
         loading: false
     }
 }
@@ -35,7 +35,7 @@ const filmFetchingErrorHandler = (state) => {
 const fetchedFilmActorHandler = (state, action) => {
     return {
         ...state,
-        actors: action.payload.data.cast,
+        actors: action.payload?.data?.cast || [],
         loading: false
     }
 }
@@ -43,7 +43,7 @@ const fetchedFilmActorHandler = (state, action) => {
 const fetchedFilmMediaHandler = (state, action) => {
     return {
         ...state,
-        media: action.payload.data,
+        media: action.payload?.data || [],
         loading: false
     }
 }
@@ -51,14 +51,14 @@ const fetchedFilmMediaHandler = (state, action) => {
 const fetchFilmRecomendHandler = (state, action) => {
     return {
         ...state,
-        recomend: action.payload.data.results
+        recomend: action.payload?.data?.results || []
     }
 }
 
 const fetchFilmReviewHandler = (state, action) => {
     return {
         ...state,
-        reviews: action.payload.data.results
+        reviews: action.payload?.data?.results || []
     }
 }
 
